@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Discover Muslim Linux TEST. Download the test release and explore the source code on GitHub."
+  >
+  <title>Muslim Linux TEST — A fresh start</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap');
+
+    :root {
+      font-family: 'DM Sans', sans-serif;
+      color: #203c30;
+      background: #fafbf8;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      --green: #285c40;
+      --muted: #788178;
+      --line: #e2e7de;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 35px; }
+    body { margin: 0; line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #83a881;
+      outline-offset: 5px;
+    }
+
+    [hidden] { display: none !important; }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .site-shell {
+      max-width: 1440px;
+      padding: 0 72px;
+      margin: 0 auto;
+    }
+
+    .header {
+      height: 104px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -1.1px;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 35px;
+      height: 35px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+    }
+
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand-light { font-weight: 450; }
+    .brand-period { color: #7a986d; }
+
+    .header nav {
+      display: flex;
+      gap: 34px;
+      padding-left: 35px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #657063;
+      transition: color .2s;
+    }
+
+    .nav-link:hover { color: var(--green); }
+
+    .nav-dot {
+      width: 5px;
+      height: 5px;
+      background: #719667;
+      border-radius: 50%;
+    }
+
+    .header-download {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      padding: 11px 18px;
+      border: 1px solid #cfd9cc;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: background .2s;
+    }
+
+    .header-download:hover { background: #eaf0e5; }
+    .header-download svg { width: 16px; height: 16px; }
+
+    .hero {
+      min-height: 588px;
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      align-items: center;
+      gap: 30px;
+      padding: 45px 0 55px;
+    }
+
+    .hero-copy { position: relative; z-index: 1; }
+
+    .release-label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.7px;
+      margin-bottom: 25px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #709468;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: clamp(52px, 5.5vw, 78px);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -4.5px;
+      margin: 0 0 25px;
+    }
+
+    .serif-word {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 500;
+      color: #5c7e49;
+    }
+
+    .hero-description {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #757e73;
+      max-width: 390px;
+      margin: 0 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 21px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 550;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+
+    .button-primary {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 4px 10px #2148310c;
+    }
+
+    .button-primary:hover {
+      background: #1c4731;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px #21483120;
+    }
+
+    .button svg { width: 17px; height: 17px; }
+
+    .button-badge {
+      font-size: 9px;
+      letter-spacing: .8px;
+      background: #ffffff15;
+      padding: 4px 6px;
+      border: 1px solid #ffffff25;
+      border-radius: 3px;
+      margin-left: 3px;
+    }
+
+    .explore-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 550;
+    }
+
+    .explore-link svg {
+      width: 16px;
+      transition: transform .2s;
+    }
+
+    .explore-link:hover svg { transform: translateX(4px); }
+
+    .download-caption {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      color: #8a9185;
+      margin: 27px 0 0;
+    }
+
+    .small-dot {
+      height: 4px;
+      width: 4px;
+      border-radius: 50%;
+      background: #8a9185;
+      flex-shrink: 0;
+    }
+
+    .caption-divider { margin: 0 4px; color: #bec5b7; }
+
+    .moon-art {
+      position: relative;
+      height: 465px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      isolation: isolate;
+    }
+
+    .moon-art::before {
+      content: '';
+      position: absolute;
+      inset: 0 -25px;
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse,
+        #e4ecd5 0%,
+        #eef3e6 38%,
+        #fafbf800 71%
+      );
+      z-index: -1;
+    }
+
+    .crescent {
+      width: 420px;
+      max-width: 100%;
+      filter: drop-shadow(-12px 22px 17px #29472d20);
+      transform: rotate(-13deg);
+      position: relative;
+    }
+
+    .orbit {
+      position: absolute;
+      border: 1px solid #d7e0cc;
+      border-radius: 50%;
+    }
+
+    .orbit-one {
+      width: 405px;
+      height: 405px;
+      transform: rotate(-22deg);
+    }
+
+    .orbit-two {
+      width: 475px;
+      height: 240px;
+      transform: rotate(-35deg);
+      border-color: #d4dfc980;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: #80976c;
+      border-radius: 50%;
+    }
+
+    .dot-one { top: 52px; left: 24%; }
+
+    .dot-two {
+      bottom: 98px;
+      right: 9%;
+      width: 5px;
+      height: 5px;
+    }
+
+    .little-star {
+      position: absolute;
+      color: #8fa478;
+      font-weight: 400;
+      font-size: 26px;
+    }
+
+    .star-one { right: 15%; top: 90px; }
+    .star-two { left: 4%; bottom: 92px; font-size: 19px; }
+
+    .tiny-star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #9cb18a;
+      border-radius: 50%;
+    }
+
+    .star-three { right: 34%; top: 49px; }
+
+    .art-caption {
+      position: absolute;
+      bottom: 55px;
+      left: 22%;
+      background: #ffffffdc;
+      box-shadow: 0 7px 25px #344b2d08;
+      border: 1px solid #e3e9da;
+      border-radius: 6px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 11px;
+      letter-spacing: .1px;
+      backdrop-filter: blur(8px);
+    }
+
+    .art-coordinate {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: #9aab8c;
+    }
+
+    .vision-section {
+      padding: 41px 0 53px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 31px;
+    }
+
+    .eyebrow {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      color: #7b8b70;
+    }
+
+    h2 {
+      margin: 12px 0 0;
+      font-size: 29px;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -1px;
+    }
+
+    .muted-heading { color: #8e9986; }
+
+    .section-heading > p {
+      font-size: 11px;
+      line-height: 1.7;
+      color: #8a9284;
+      margin: 0 0 2px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .feature {
+      padding: 24px;
+      background: #f3f5ef;
+      border: 1px solid #e6eade;
+      border-radius: 9px;
+      position: relative;
+    }
+
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid #dfe5d5;
+      background: #fafbf7;
+      color: #668356;
+    }
+
+    .feature-icon svg { width: 18px; height: 18px; }
+
+    .feature-number {
+      position: absolute;
+      right: 23px;
+      top: 31px;
+      color: #a3ae97;
+      font-size: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    h3 {
+      font-size: 14px;
+      letter-spacing: -.2px;
+      font-weight: 550;
+      margin: 22px 0 9px;
+    }
+
+    .feature p {
+      color: #7f8778;
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0;
+      max-width: 270px;
+    }
+
+    .release-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 37px 43px;
+      border-radius: 10px;
+      border: 1px solid #dfe7d6;
+      background: #edf2e6;
+    }
+
+    .release-info .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 8px;
+    }
+
+    .release-info h2 { font-size: 31px; }
+
+    .release-info > p {
+      font-size: 12px;
+      color: #7a8670;
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+
+    .release-download { width: 300px; flex-shrink: 0; }
+
+    .release-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 13px;
+      font-size: 11px;
+      font-weight: 550;
+    }
+
+    .test-badge {
+      font-size: 7px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #70825f;
+      border: 1px solid #cad6be;
+      padding: 4px 6px;
+      border-radius: 3px;
+    }
+
+    .release-download .button { display: flex; width: 100%; }
+    .release-download .button svg:last-child { margin-left: auto; }
+
+    .notes-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 14px;
+      border: 0;
+      background: transparent;
+      color: #7a8770;
+      font-size: 10px;
+      padding: 0;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .notes-toggle span { font-size: 16px; }
+
+    .release-notes {
+      font-size: 11px;
+      color: #66745e;
+      line-height: 1.7;
+      padding-top: 10px;
+    }
+
+    .test-notice {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 0 33px;
+      color: #8d9684;
+    }
+
+    .test-notice p { margin: 0; font-size: 9px; line-height: 1.6; }
+
+    .notice-symbol {
+      display: grid;
+      place-items: center;
+      width: 12px;
+      height: 12px;
+      border: 1px solid #9da890;
+      border-radius: 50%;
+      font-size: 8px;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      min-height: 91px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      gap: 8px;
+      letter-spacing: -.8px;
+    }
+
+    .footer-brand .brand-mark { width: 26px; height: 26px; }
+    .footer-brand svg { width: 17px; height: 17px; }
+    .footer > span { font-size: 10px; color: #9aa18f; }
+
+    .footer-version {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .footer-version span {
+      font-size: 7px;
+      letter-spacing: 1px;
+      border: 1px solid #dde4d5;
+      padding: 3px 5px;
+      border-radius: 3px;
+    }
+
+    @media (min-width: 1400px) {
+      .hero { min-height: 650px; }
+      .hero-description { font-size: 16px; max-width: 420px; }
+      .moon-art { transform: scale(1.12); }
+    }
+
+    @media (max-width: 1050px) {
+      .site-shell { padding: 0 40px; }
+      .hero { gap: 10px; }
+      h1 { font-size: 61px; letter-spacing: -3.5px; }
+      .orbit-one { width: 330px; height: 330px; }
+      .orbit-two { width: 365px; height: 205px; }
+      .crescent { width: 350px; }
+      .art-caption { left: 12%; bottom: 74px; }
+      .feature { padding: 20px; }
+    }
+
+    @media (max-width: 760px) {
+      .site-shell { padding: 0 24px; }
+      .header { height: 82px; }
+      .brand { font-size: 22px; }
+      .header nav { display: none; }
+      .header-download { padding: 10px 12px; gap: 10px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 48px;
+        padding-bottom: 26px;
+        gap: 0;
+      }
+
+      .hero-copy { max-width: 480px; }
+      h1 { font-size: clamp(53px, 10vw, 72px); }
+      .hero-description { max-width: 430px; font-size: 14px; }
+
+      .hero-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .download-caption { margin-top: 20px; }
+
+      .moon-art {
+        height: 370px;
+        max-width: 450px;
+        width: 100%;
+        margin: 10px auto 0;
+      }
+
+      .art-caption { bottom: 36px; left: 23%; }
+      .dot-one { top: 27px; }
+      .star-one { top: 55px; }
+      .section-heading { gap: 20px; }
+      h2 { font-size: 25px; }
+      .section-heading > p { display: none; }
+      .features { grid-template-columns: 1fr; gap: 12px; }
+      .feature { padding: 22px 24px; }
+      .feature p { max-width: none; }
+      h3 { margin-top: 15px; }
+      .vision-section { padding-top: 30px; padding-bottom: 32px; }
+
+      .release-section {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 28px;
+        gap: 30px;
+      }
+
+      .release-download { width: 100%; }
+      .release-info h2 { font-size: 31px; }
+
+      .test-notice {
+        align-items: flex-start;
+        padding: 18px 8px 28px;
+      }
+
+      .notice-symbol { margin-top: 2px; }
+      .footer { flex-wrap: wrap; padding: 24px 0; gap: 17px; }
+
+      .footer > span:not(.footer-version) {
+        order: 3;
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Reusable SVG icons -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="0"
+    height="0"
+    aria-hidden="true"
+    style="position: absolute; overflow: hidden;"
+  >
+    <defs>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/>
+      </symbol>
+
+      <symbol id="icon-download" viewBox="0 0 24 24">
+        <path d="M12 3v12m-5-5 5 5 5-5"/>
+        <path d="M4 16v4h16v-4"/>
+      </symbol>
+
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M4 12h16m-6-6 6 6-6 6"/>
+      </symbol>
+
+      <symbol id="icon-code" viewBox="0 0 24 24">
+        <path d="m7 7-5 5 5 5m10-10 5 5-5 5m-4-13-2 18"/>
+      </symbol>
+
+      <symbol id="icon-spark" viewBox="0 0 24 24">
+        <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="site-shell">
+    <header class="header">
+      <a class="brand" href="#" aria-label="Muslim Linux home">
+        <span class="brand-mark">
+          <svg class="icon" aria-hidden="true">
+            <use href="#icon-moon"/>
+          </svg>
+        </span>
+        <span>muslim<span class="brand-light">linux</span><span class="brand-period">.</span></span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="#about">The vision</a>
+        <a class="nav-link" href="#release">
+          Test release <span class="nav-dot"></span>
+        </a>
+      </nav>
+
+      <a
+        class="header-download"
+        href="https://filebin.net/dmivdactthxh4p4k"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download
+        <svg class="icon" aria-hidden="true">
+          <use href="#icon-download"/>
+        </svg>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="release-label">
+            <span class="status-dot"></span>
+            A NEW BEGINNING, BUILT ON LINUX
+          </div>
+
+          <h1>
+            A new moon.<br>
+            A <span class="serif-word">fresh</span> start.
+          </h1>
+
+          <p class="hero-description">
+            Meet Muslim Linux. A fresh perspective on your operating system,
+            inspired by simplicity, purpose, and the freedom to make it your own.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://filebin.net/dmivdactthxh4p4k"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-download"/>
+              </svg>
+              Download Muslim Linux
+              <span class="button-badge">TEST</span>
+            </a>
+
+            <a
+              class="explore-link"
+              href="https://github.com/vrn2gei/MuslimLinuxSourceCode"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-code"/>
+              </svg>
+              Source code on GitHub
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-arrow"/>
+              </svg>
+            </a>
+
+            <a class="explore-link" href="#about">
+              Discover the vision
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-arrow"/>
+              </svg>
+            </a>
+          </div>
+
+          <p class="download-caption">
+            <span class="small-dot"></span>
+            Test release
+            <span class="caption-divider">/</span>
+            Free to explore. Yours to discover.
+          </p>
+        </div>
+
+        <div
+          class="moon-art"
+          role="img"
+          aria-label="A luminous green crescent moon surrounded by delicate orbital rings"
+        >
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <span class="orbit-dot dot-one"></span>
+          <span class="orbit-dot dot-two"></span>
+          <span class="little-star star-one">+</span>
+          <span class="little-star star-two">+</span>
+          <span class="tiny-star star-three"></span>
+
+          <svg class="crescent" viewBox="0 0 420 440" aria-hidden="true">
+            <defs>
+              <radialGradient id="moon-color" cx="28%" cy="30%" r="80%">
+                <stop offset="0%" stop-color="#e1eed0"/>
+                <stop offset="34%" stop-color="#a7c28e"/>
+                <stop offset="68%" stop-color="#597e48"/>
+                <stop offset="100%" stop-color="#183f2d"/>
+              </radialGradient>
+
+              <mask id="crescent-mask">
+                <rect width="420" height="440" fill="black"/>
+                <circle cx="210" cy="220" r="166" fill="white"/>
+                <circle cx="279" cy="167" r="148" fill="black"/>
+              </mask>
+
+              <filter id="moon-texture">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency=".065"
+                  numOctaves="4"
+                  seed="12"
+                  result="noise"
+                />
+                <feColorMatrix in="noise" type="saturate" values="0"/>
+                <feComposite in2="SourceGraphic" operator="in"/>
+                <feBlend in="SourceGraphic" mode="soft-light"/>
+              </filter>
+            </defs>
+
+            <g mask="url(#crescent-mask)">
+              <circle
+                cx="210"
+                cy="220"
+                r="166"
+                fill="url(#moon-color)"
+                filter="url(#moon-texture)"
+              />
+              <g fill="#29462a" opacity=".13">
+                <circle cx="91" cy="208" r="17"/>
+                <circle cx="130" cy="289" r="26"/>
+                <circle cx="175" cy="342" r="19"/>
+                <circle cx="82" cy="258" r="10"/>
+                <circle cx="129" cy="112" r="13"/>
+                <circle cx="211" cy="370" r="10"/>
+              </g>
+            </g>
+          </svg>
+
+          <div class="art-caption">
+            <span class="status-dot"></span>
+            A new phase of possibility
+          </div>
+
+          <span class="art-coordinate">01 / A FRESH PERSPECTIVE</span>
+        </div>
+      </section>
+
+      <section class="vision-section" id="about">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">ROOTED IN PURPOSE</span>
+            <h2>
+              A little different.
+              <span class="muted-heading">By design.</span>
+            </h2>
+          </div>
+          <p>A familiar foundation.<br>A new direction.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <span class="feature-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-moon"/>
+              </svg>
+            </span>
+            <span class="feature-number">01</span>
+            <h3>A thoughtful beginning</h3>
+            <p>
+              A Linux project with a distinct identity, inspired by the quiet
+              beauty of the moon and a sense of purpose.
+            </p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-code"/>
+              </svg>
+            </span>
+            <span class="feature-number">02</span>
+            <h3>The freedom of Linux</h3>
+            <p>
+              Explore an operating system built on Linux, with the freedom to
+              learn, experiment, and find your own way.
+            </p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-spark"/>
+              </svg>
+            </span>
+            <span class="feature-number">03</span>
+            <h3>Be part of the first chapter</h3>
+            <p>
+              This is just the beginning. Discover the test release and
+              experience Muslim Linux in its early days.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="release-section" id="release">
+        <div class="release-info">
+          <span class="eyebrow">
+            <span class="status-dot"></span>
+            THE FIRST CHAPTER
+          </span>
+          <h2>Your next beginning<br>starts here.</h2>
+          <p>Download Muslim Linux TEST and explore something new.</p>
+        </div>
+
+        <div class="release-download">
+          <div class="release-meta">
+            <span>Muslim Linux</span>
+            <span class="test-badge">TEST RELEASE</span>
+          </div>
+
+          <a
+            class="button button-primary"
+            href="https://filebin.net/dmivdactthxh4p4k"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#icon-download"/>
+            </svg>
+            Download test release
+            <svg class="icon" aria-hidden="true">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+
+          <button
+            class="notes-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="release-notes"
+          >
+            Before you get started
+            <span aria-hidden="true">+</span>
+          </button>
+
+          <p class="release-notes" id="release-notes" hidden>
+            This is an early test release, not a production-ready system.
+            Back up your files and try it in a virtual machine or on a spare
+            device. The download button opens the hosted file page in a new tab.
+          </p>
+        </div>
+      </section>
+
+      <div class="test-notice">
+        <span class="notice-symbol" aria-hidden="true">i</span>
+        <p>
+          A work in progress, with a world of possibilities. This test release
+          is intended for exploration, not everyday use.
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <a class="brand footer-brand" href="#" aria-label="Muslim Linux home">
+        <span class="brand-mark">
+          <svg class="icon" aria-hidden="true">
+            <use href="#icon-moon"/>
+          </svg>
+        </span>
+        <span>muslim<span class="brand-light">linux</span><span class="brand-period">.</span></span>
+      </a>
+
+      <span>A fresh perspective. A shared journey.</span>
+      <span class="footer-version">Muslim Linux <span>TEST</span></span>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.notes-toggle');
+    const notes = document.getElementById('release-notes');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      notes.hidden = expanded;
+      toggle.querySelector('span').textContent = expanded ? '+' : '−';
+    });
+  </script>
+</body>
+</html>
